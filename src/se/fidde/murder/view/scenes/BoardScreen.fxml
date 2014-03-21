@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?scenebuilder-background-color 0x000000ff?>
+<?scenebuilder-preview-i18n-resource ../../model/lang/sv.properties?>
+
+<BorderPane fx:id="board" onKeyPressed="#move" prefHeight="670.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="se.fidde.murder.controllers.BoardController">
+  <bottom>
+    <ToolBar>
+      <items>
+        <HBox id="HBox" alignment="CENTER" spacing="15.0">
+          <children>
+            <Button id="rollButton" fx:id="roll" mnemonicParsing="false" onAction="#rollDice" text="%Roll" />
+            <Button id="suggestButton" fx:id="suggest" disable="true" mnemonicParsing="false" onAction="#suggest" text="%Suggest" />
+            <Button id="accuseButton" fx:id="accuse" disable="true" mnemonicParsing="false" onAction="#accuse" text="%Accuse" />
+            <Label text="%Steps" />
+            <Label id="stepsCounter" fx:id="stepsLeftCounter" text="0" />
+            <Label id="stepsCounter" text="%Players" />
+            <ChoiceBox fx:id="choiceBoxNumPlayers">
+              <items>
+                <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="1" />
+                  <String fx:value="2" />
+                  <String fx:value="3" />
+                  <String fx:value="4" />
+                  <String fx:value="5" />
+                  <String fx:value="6" />
+                </FXCollections>
+              </items>
+            </ChoiceBox>
+          </children>
+        </HBox>
+      </items>
+      <BorderPane.margin>
+        <Insets />
+      </BorderPane.margin>
+    </ToolBar>
+  </bottom>
+  <center>
+    <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <children>
+        <ImageView fitHeight="569.3703547676661" fitWidth="564.7944946289062" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER">
+          <image>
+            <Image url="@../images/cluedo-board-game.jpg" />
+          </image>
+        </ImageView>
+        <GridPane fx:id="boardGrid" alignment="CENTER" gridLinesVisible="false" prefHeight="441.0" prefWidth="433.0" StackPane.alignment="TOP_LEFT">
+          <children>
+            <Circle id="player1Token" fx:id="redCircle" fill="RED" onKeyPressed="#move" radius="7.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="24" GridPane.valignment="CENTER" />
+            <Circle id="player2Token" fx:id="blueCircle" radius="7.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="23" GridPane.rowIndex="6">
+              <fill>
+                <Color blue="0.800" green="0.129" red="0.000" fx:id="x2" />
+              </fill>
+            </Circle>
+            <Circle id="player3Token" fx:id="greenCircle" radius="7.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="14" GridPane.rowIndex="0">
+              <fill>
+                <Color blue="0.000" green="0.800" red="0.255" fx:id="x3" />
+              </fill>
+            </Circle>
+            <Circle id="player4Token" fx:id="yellowCircle" fill="YELLOW" radius="7.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="0" GridPane.rowIndex="17" />
+            <Circle id="player5Token" fx:id="whiteCircle" fill="WHITE" radius="7.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="9" GridPane.rowIndex="0" />
+            <Circle id="player6Token" fx:id="purpleCircle" fill="PURPLE" radius="7.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="23" GridPane.rowIndex="19" />
+          </children>
+          <columnConstraints>
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="18.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="22.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="20.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="20.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="20.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="18.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="20.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="20.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="20.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="20.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="20.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="20.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="22.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="21.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="20.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="20.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="22.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="20.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="20.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="21.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="20.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="20.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="21.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="20.0" />
+          </columnConstraints>
+          <rowConstraints>
+            <RowConstraints maxHeight="19.0" minHeight="-Infinity" prefHeight="19.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="21.0" minHeight="-Infinity" prefHeight="21.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="20.0" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="20.0" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="21.0" minHeight="-Infinity" prefHeight="21.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="21.0" minHeight="-Infinity" prefHeight="21.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="20.0" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="21.0" minHeight="-Infinity" prefHeight="21.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="19.0" minHeight="-Infinity" prefHeight="19.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="21.0" minHeight="-Infinity" prefHeight="21.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="21.0" minHeight="-Infinity" prefHeight="21.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="19.0" minHeight="-Infinity" prefHeight="19.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="21.0" minHeight="-Infinity" prefHeight="21.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="21.0" minHeight="-Infinity" prefHeight="21.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="19.0" minHeight="-Infinity" prefHeight="19.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="21.0" minHeight="-Infinity" prefHeight="21.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="19.0" minHeight="-Infinity" prefHeight="19.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="21.0" minHeight="-Infinity" prefHeight="21.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="19.0" minHeight="-Infinity" prefHeight="19.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="21.0" minHeight="-Infinity" prefHeight="21.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="19.0" minHeight="-Infinity" prefHeight="19.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="21.0" minHeight="-Infinity" prefHeight="21.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="19.0" minHeight="-Infinity" prefHeight="19.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="19.0" minHeight="-Infinity" prefHeight="19.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="19.0" minHeight="-Infinity" prefHeight="19.0" vgrow="NEVER" />
+          </rowConstraints>
+          <StackPane.margin>
+            <Insets bottom="15.0" right="11.0" />
+          </StackPane.margin>
+        </GridPane>
+      </children>
+    </StackPane>
+  </center>
+  <left>
+    <Accordion fx:id="accordion">
+      <expandedPane>
+        <TitledPane id="Player 1" fx:id="player1" animated="true" expanded="true" scaleZ="1.0" text="%Player1" underline="false">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="theme">
+              <children>
+                <VBox id="redVbox" fx:id="redVBox" alignment="CENTER" layoutX="0.0" layoutY="14.0" spacing="20.0">
+                  <children>
+                    <VBox id="VBox" alignment="CENTER" spacing="5.0">
+                      <children>
+                        <Label text="%Suspects" />
+                        <ListView fx:id="suspectList_red" prefHeight="70.0" prefWidth="201.0" />
+                      </children>
+                    </VBox>
+                    <VBox id="VBox" alignment="CENTER" spacing="5.0">
+                      <children>
+                        <Label text="%Weapons" />
+                        <ListView fx:id="weaponList_red" prefHeight="70.0" prefWidth="200.0" />
+                      </children>
+                    </VBox>
+                    <VBox id="VBox" alignment="CENTER" spacing="5.0">
+                      <children>
+                        <Label text="%Rooms" />
+                        <ListView fx:id="roomList_red" prefHeight="70.0" prefWidth="200.0" />
+                      </children>
+                    </VBox>
+                    <VBox id="VBox" alignment="CENTER" spacing="20.0">
+                      <children>
+                        <Label text="%Color" />
+                        <Circle id="" fill="RED" radius="34.5" stroke="BLACK" strokeType="INSIDE" />
+                      </children>
+                    </VBox>
+                  </children>
+                </VBox>
+              </children>
+            </AnchorPane>
+          </content>
+        </TitledPane>
+      </expandedPane>
+      <panes>
+        <fx:reference source="player1" />
+        <TitledPane id="Player 2" fx:id="player2" animated="true" text="%Player2">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <VBox fx:id="blueVBox" alignment="CENTER" layoutX="0.0" layoutY="14.0" spacing="20.0">
+                  <children>
+                    <VBox id="VBox" alignment="CENTER" spacing="5.0">
+                      <children>
+                        <Label text="%Suspects" />
+                        <ListView fx:id="suspectList_blue" prefHeight="70.0" prefWidth="201.0" />
+                      </children>
+                    </VBox>
+                    <VBox id="VBox" alignment="CENTER" spacing="5.0">
+                      <children>
+                        <Label text="%Weapons" />
+                        <ListView fx:id="weaponList_blue" prefHeight="70.0" prefWidth="200.0" />
+                      </children>
+                    </VBox>
+                    <VBox id="VBox" alignment="CENTER" spacing="5.0">
+                      <children>
+                        <Label text="%Rooms" />
+                        <ListView fx:id="roomList_blue" prefHeight="70.0" prefWidth="200.0" />
+                      </children>
+                    </VBox>
+                    <VBox id="VBox" alignment="CENTER" spacing="20.0">
+                      <children>
+                        <Label text="%Color" />
+                        <Circle fill="$x2" radius="34.5" stroke="BLACK" strokeType="INSIDE" />
+                      </children>
+                    </VBox>
+                  </children>
+                </VBox>
+              </children>
+            </AnchorPane>
+          </content>
+        </TitledPane>
+        <TitledPane id="Player 3" fx:id="player3" animated="true" expanded="false" text="%Player3">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <VBox id="redVbox" fx:id="greenVBox" alignment="CENTER" layoutX="0.0" layoutY="14.0" spacing="20.0">
+                  <children>
+                    <VBox id="VBox" alignment="CENTER" spacing="5.0">
+                      <children>
+                        <Label text="%Suspects" />
+                        <ListView fx:id="suspectList_green" editable="false" prefHeight="70.0" prefWidth="201.0" />
+                      </children>
+                    </VBox>
+                    <VBox id="VBox" alignment="CENTER" spacing="5.0">
+                      <children>
+                        <Label text="%Weapons" />
+                        <ListView fx:id="weaponList_green" prefHeight="70.0" prefWidth="200.0" />
+                      </children>
+                    </VBox>
+                    <VBox id="VBox" alignment="CENTER" spacing="5.0">
+                      <children>
+                        <Label text="%Rooms" />
+                        <ListView fx:id="roomList_green" prefHeight="70.0" prefWidth="200.0" />
+                      </children>
+                    </VBox>
+                    <VBox id="VBox" alignment="CENTER" spacing="20.0">
+                      <children>
+                        <Label text="%Color" />
+                        <Circle fill="$x3" radius="34.5" stroke="BLACK" strokeType="INSIDE" />
+                      </children>
+                    </VBox>
+                  </children>
+                </VBox>
+              </children>
+            </AnchorPane>
+          </content>
+        </TitledPane>
+        <TitledPane id="Player 4" fx:id="player4" animated="true" expanded="false" text="%Player4" visible="true">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <VBox id="yellowVbox" fx:id="yellowVBox" alignment="CENTER" layoutX="0.0" layoutY="14.0" spacing="20.0">
+                  <children>
+                    <VBox id="VBox" alignment="CENTER" spacing="5.0">
+                      <children>
+                        <Label text="%Suspects" />
+                        <ListView fx:id="suspectList_yellow" editable="false" prefHeight="70.0" prefWidth="201.0" />
+                      </children>
+                    </VBox>
+                    <VBox id="VBox" alignment="CENTER" spacing="5.0">
+                      <children>
+                        <Label text="%Weapons" />
+                        <ListView fx:id="weaponList_yellow" prefHeight="70.0" prefWidth="200.0" />
+                      </children>
+                    </VBox>
+                    <VBox id="VBox" alignment="CENTER" spacing="5.0">
+                      <children>
+                        <Label text="%Rooms" />
+                        <ListView id="roomList_yellow" fx:id="roomsList_yellow" prefHeight="70.0" prefWidth="200.0" />
+                      </children>
+                    </VBox>
+                    <VBox id="VBox" alignment="CENTER" spacing="20.0">
+                      <children>
+                        <Label text="%Color" />
+                        <Circle fill="YELLOW" radius="34.5" stroke="BLACK" strokeType="INSIDE" />
+                      </children>
+                    </VBox>
+                  </children>
+                </VBox>
+              </children>
+            </AnchorPane>
+          </content>
+        </TitledPane>
+        <TitledPane id="Player 5" fx:id="player5" animated="true" expanded="false" text="%Player5" visible="true">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <VBox id="whiteVbox" alignment="CENTER" layoutX="0.0" layoutY="14.0" spacing="20.0">
+                  <children>
+                    <VBox id="VBox" alignment="CENTER" spacing="5.0">
+                      <children>
+                        <Label text="%Suspects" />
+                        <ListView fx:id="suspectList_white" editable="false" prefHeight="70.0" prefWidth="201.0" />
+                      </children>
+                    </VBox>
+                    <VBox id="VBox" alignment="CENTER" spacing="5.0">
+                      <children>
+                        <Label text="%Weapons" />
+                        <ListView id="weaponList_white" fx:id="weaponsList_white" prefHeight="70.0" prefWidth="200.0" />
+                      </children>
+                    </VBox>
+                    <VBox id="VBox" alignment="CENTER" spacing="5.0">
+                      <children>
+                        <Label text="%Rooms" />
+                        <ListView id="roomList_white" fx:id="roomsList_white" prefHeight="70.0" prefWidth="200.0" />
+                      </children>
+                    </VBox>
+                    <VBox id="VBox" alignment="CENTER" spacing="20.0">
+                      <children>
+                        <Label text="%Color" />
+                        <Circle fill="WHITE" radius="34.5" stroke="BLACK" strokeType="INSIDE" />
+                      </children>
+                    </VBox>
+                  </children>
+                </VBox>
+              </children>
+            </AnchorPane>
+          </content>
+        </TitledPane>
+        <TitledPane id="Player 6" fx:id="player6" animated="true" disable="false" expanded="false" text="%Player6" visible="true">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <VBox id="purpleVBox" alignment="CENTER" layoutX="0.0" layoutY="14.0" spacing="20.0">
+                  <children>
+                    <VBox id="VBox" alignment="CENTER" spacing="5.0">
+                      <children>
+                        <Label text="%Suspects" />
+                        <ListView fx:id="suspectList_purple" editable="false" prefHeight="70.0" prefWidth="201.0" />
+                      </children>
+                    </VBox>
+                    <VBox id="VBox" alignment="CENTER" spacing="5.0">
+                      <children>
+                        <Label text="%Weapons" />
+                        <ListView id="weaponList_purple" fx:id="weaponsList_purple" prefHeight="70.0" prefWidth="200.0" />
+                      </children>
+                    </VBox>
+                    <VBox id="VBox" alignment="CENTER" spacing="5.0">
+                      <children>
+                        <Label text="%Rooms" />
+                        <ListView id="roomList_purple" fx:id="roomsList_purple" prefHeight="70.0" prefWidth="200.0" />
+                      </children>
+                    </VBox>
+                    <VBox id="VBox" alignment="CENTER" spacing="20.0">
+                      <children>
+                        <Label text="%Color" />
+                        <Circle fill="PURPLE" radius="34.5" stroke="BLACK" strokeType="INSIDE" />
+                      </children>
+                    </VBox>
+                  </children>
+                </VBox>
+              </children>
+            </AnchorPane>
+          </content>
+        </TitledPane>
+      </panes>
+    </Accordion>
+  </left>
+  <right>
+    <ImageView fx:id="playerPicture" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+      <BorderPane.margin>
+        <Insets left="5.0" right="5.0" />
+      </BorderPane.margin>
+    </ImageView>
+  </right>
+  <top>
+    <MenuBar>
+      <menus>
+        <Menu mnemonicParsing="false" text="%File">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#restart" text="%Restart" fx:id="restart" />
+            <MenuItem mnemonicParsing="false" onAction="#save" text="%Save" fx:id="save" />
+            <MenuItem mnemonicParsing="false" onAction="#load" text="%Load" fx:id="load" />
+            <MenuItem mnemonicParsing="false" onAction="#changePicture" text="%ChangePicture" fx:id="changePicture" />
+            <MenuItem mnemonicParsing="false" onAction="#exit" text="%Exit" fx:id="exit" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+  </top>
+</BorderPane>

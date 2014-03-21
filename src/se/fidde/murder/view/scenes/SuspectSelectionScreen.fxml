@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="suspects" mouseTransparent="false" pickOnBounds="true" prefHeight="680.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="se.fidde.murder.controllers.SuspectSelectionController">
+  <bottom>
+    <VBox id="VBox" alignment="TOP_CENTER" spacing="5.0">
+      <children>
+        <Label fx:id="cardName" alignment="CENTER" prefHeight="43.0001220703125" prefWidth="179.0" text="%SelectCard" textAlignment="CENTER" textFill="RED" underline="true">
+          <font>
+            <Font size="18.0" />
+          </font>
+        </Label>
+        <Button id="suspectSelectButton" fx:id="selectButton" mnemonicParsing="false" onAction="#setSelectedValue" text="%Select" />
+      </children>
+      <padding>
+        <Insets bottom="10.0" />
+      </padding>
+    </VBox>
+  </bottom>
+  <center>
+    <StackPane id="StackPane" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="549.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+      <children>
+        <ImageView id="Cluedo_card_characters_by_SkellingtonGhost" fitHeight="0.0" fitWidth="0.0" pickOnBounds="true" StackPane.alignment="TOP_CENTER">
+          <image>
+            <Image url="@../images/Cluedo_card_characters_by_SkellingtonGhost.jpg" preserveRatio="true" smooth="true" />
+          </image>
+        </ImageView>
+        <GridPane id="selectGrid" alignment="TOP_LEFT" gridLinesVisible="true" onMouseClicked="#getSelectionValue" prefHeight="549.0" prefWidth="898.0" styleClass="selectionGrid" StackPane.alignment="TOP_CENTER">
+          <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          </columnConstraints>
+          <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          </rowConstraints>
+          <stylesheets>
+            <URL value="@../css/theme.css" />
+          </stylesheets>
+        </GridPane>
+      </children>
+    </StackPane>
+  </center>
+</BorderPane>

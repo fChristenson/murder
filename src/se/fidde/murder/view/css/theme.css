@@ -1,0 +1,31 @@
+.theme{
+	-fx-background-color: black ;	
+}
+.selectionGrid:hover{
+	-fx-cursor: hand ;
+}
+.button{
+	-fx-radius: 10px;
+	-fx-background-color:  linear-gradient(to bottom, blue, white);
+	-fx-border-color: white;
+	-fx-text-fill: white ;
+}
+.tool-bar{
+	-fx-background-color: black;
+	-fx-border-color: white ;
+}
+.label{
+	-fx-text-fill: white;
+}
+.choice-box{
+	-fx-border-radius: 10px;
+	-fx-background-color: black;
+	-fx-border-color: white;
+	-fx-text-fill: white ;
+}
+.titled-pane{
+	-fx-background-color: black;
+}
+.list-view{
+	-fx-background-color: black;
+}
